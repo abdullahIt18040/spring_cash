@@ -20,9 +20,14 @@ public class SpringCashApplication  implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-//
-//   var rs = productService.getProduct(1);
-//        System.out.println("abdullah al amamun ,,,,,,,,,,,,,,,,,,,,,,,");
+
+   var rs = productService.fetchProductById(1);
+        System.out.println("abdullah al amamun ,,,,,,,,,,,,,,,,,,,,,,,1");
+        System.out.println(productService.fetchProductById(1));
+        System.out.println("abdullah al amamun ,,,,,,,,,,,,,,,,,,,,,,,2");
+        System.out.println(productService.getProduct(2));
+        System.out.println("abdullah al amamun ,,,,,,,,,,,,,,,,,,,,,,,3");
+        System.out.println(productService.getProduct(2));
 //
 //
 //        var rs1 = productService.getProduct(1);

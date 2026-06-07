@@ -25,7 +25,15 @@ class CacheLogic{
 public class ProductService {
 
     private final ProductRepos productRepos;
-    @Cacheable(cacheNames = "product",key = "#id",condition = "@cacheLogic.isCacheable()")
+//    condition -> evaluated before method invoke(apply cachr when the condition outcome is true)
+//    unless -> evaluate after method  invoke(apply cachr when the condition outcome is false)
+    @Cacheable(cacheNames = "product",key = "#id",unless = "#result ==null", cacheResolver = "sdlcProCacheResolver")
+    public Product fetchProductById(Integer id)
+    {
+
+        return productRepos.findById(id).orElseThrow();
+    }
+    @Cacheable(cacheNames = "prods",key = "#id",cacheResolver = "sdlcProCacheResolver")
     public Product getProduct(Integer id)
     {
 
